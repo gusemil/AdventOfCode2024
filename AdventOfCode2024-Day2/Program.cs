@@ -1,32 +1,36 @@
 ﻿Console.WriteLine("Advent of Code 2024 Day 2!");
 
-List<int> levels = [7, 6, 5, 4, 3];
-List<int> levels2 = [1, 2, 7, 8, 9];
-List<int> levels3 = [.. new List<int> { 9, 7, 6, 2, 1 }];
-List<int> levels4 = [.. new List<int> { 1, 3, 2, 4, 5 }];
-List<int> levels5 = [.. new List<int> { 8, 6, 4, 4, 1 }];
-List<int> levels6 = [.. new List<int> { 1, 3, 6, 7, 9 }];
+List<int> report = [7, 6, 5, 4, 3];
+List<int> report2 = [1, 2, 7, 8, 9];
+List<int> report3 = [9, 7, 6, 2, 1 ];
+List<int> report4 = [1, 3, 2, 4, 5 ];
+List<int> report5 = [ 8, 6, 4, 4, 1 ];
+List<int> report6 = [1, 3, 6, 7, 9 ];
 
-CheckLevelSafety(levels);
-CheckLevelSafety(levels2);
-CheckLevelSafety(levels3);
-CheckLevelSafety(levels4);
-CheckLevelSafety(levels5);
-CheckLevelSafety(levels6);
+int safeReports = 0;
+
+safeReports += CheckLevelSafety(report,true);
+safeReports += CheckLevelSafety(report2,true);
+safeReports += CheckLevelSafety(report3,true);
+safeReports += CheckLevelSafety(report4,true);
+safeReports += CheckLevelSafety(report5,true);
+safeReports += CheckLevelSafety(report6,true);
+
+Console.WriteLine("Safe reports amount: " + safeReports);
 
 
-bool CheckLevelSafety(List<int> inLevels, bool writeLogs = false)
+int CheckLevelSafety(List<int> inReport, bool writeLogs = false)
 {
     int totalIncreasing = 0;
-    for (int i = 0; i < inLevels.Count - 1; i++)
+    for (int i = 0; i < inReport.Count - 1; i++)
     {
         int increasing = 0;
-        if (inLevels[i] > inLevels[i + 1])
+        if (inReport[i] > inReport[i + 1])
         {
             //Increasing
             increasing = 1;
         }
-        else if (inLevels[i] < inLevels[i + 1])
+        else if (inReport[i] < inReport[i + 1])
         {
             //Decreasing
             increasing = -1;
@@ -41,18 +45,18 @@ bool CheckLevelSafety(List<int> inLevels, bool writeLogs = false)
             if(totalIncreasing != increasing)
             {
                 if(writeLogs) Console.WriteLine("UNSAFE");
-                return false;
+                return 0;
             }
         }
 
-        int difference = Math.Abs(inLevels[i] - inLevels[i + 1]);
+        int difference = Math.Abs(inReport[i] - inReport[i + 1]);
         if (difference > 3 || difference == 0)
         {
             if (writeLogs) Console.WriteLine("UNSAFE");
-            return false;
+            return 0;
         }
     }
 
     if (writeLogs) Console.WriteLine("SAFE");
-    return true;
+    return 1;
 }

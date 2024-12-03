@@ -6,7 +6,7 @@ List<int> leftList = new List<int>();
 List<int> rightList = new List<int>();
 
 //InitListsExample(leftList,rightList);
-var lists = InitLists.InitAndReturnLists(leftList,rightList);
+(List<int>, List<int>) lists = InitLists.InitAndReturnLists(leftList,rightList);
 leftList = lists.Item1;
 rightList = lists.Item2;
 CompareLists(leftList,rightList);
