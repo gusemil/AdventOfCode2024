@@ -1,20 +1,16 @@
-﻿Console.WriteLine("Advent of Code 2024 Day 2!");
+﻿using AdventOfCode2024_Day2;
 
-List<int> report = [7, 6, 5, 4, 3];
-List<int> report2 = [1, 2, 7, 8, 9];
-List<int> report3 = [9, 7, 6, 2, 1 ];
-List<int> report4 = [1, 3, 2, 4, 5 ];
-List<int> report5 = [ 8, 6, 4, 4, 1 ];
-List<int> report6 = [1, 3, 6, 7, 9 ];
+Console.WriteLine("Advent of Code 2024 Day 2!");
 
 int safeReports = 0;
 
-safeReports += CheckLevelSafety(report,true);
-safeReports += CheckLevelSafety(report2,true);
-safeReports += CheckLevelSafety(report3,true);
-safeReports += CheckLevelSafety(report4,true);
-safeReports += CheckLevelSafety(report5,true);
-safeReports += CheckLevelSafety(report6,true);
+var reports = InitReports.InitAndReturnReports();
+
+for(int i=0; i<reports.Count; i++)
+{
+    safeReports += CheckLevelSafety(reports[i], true);
+}
+
 
 Console.WriteLine("Safe reports amount: " + safeReports);
 
