@@ -8,7 +8,7 @@ var reports = InitReports.InitAndReturnReports();
 
 for(int i=0; i<reports.Count; i++)
 {
-    safeReports += CheckLevelSafety(reports[i], true);
+    safeReports += CheckLevelSafety(reports[i]);
 }
 
 
